@@ -1,0 +1,48 @@
+﻿<Window x:Class="ToneGenerator.Views.ConnectionView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:localVM="clr-namespace:ToneGenerator.ViewModels"
+      mc:Ignorable="d"
+      d:DataContext="{d:DesignInstance localVM:ConnectionViewModel}"
+      Title="Connection Settings" Width="210" Height="324.576"
+      MinHeight="290"
+      MinWidth="220">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="257*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <StackPanel  Orientation="Vertical" Background="White" Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Padding="10" Width="90">Comm Port</TextBlock>
+                <TextBox Margin="10" Width="90" Text="{Binding CommPort, Mode=OneWay}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Padding="10" Width="90">Baud Rate</TextBlock>
+                <TextBox Margin="10" Width="90" VerticalAlignment="Top" Text="{Binding BaudRate, Mode=OneWay}" AcceptsReturn="True"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Padding="10" Width="90">Data Bits</TextBlock>
+                <TextBox Margin="10" VerticalAlignment="Top" Width="90"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="90" Padding="10">Parity</TextBlock>
+                <TextBox Margin="10" Width="90" VerticalAlignment="Top"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="90" Padding="10">Stop Bits</TextBlock>
+                <TextBox Width="90" Margin="10" VerticalAlignment="Top"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="90" Padding="10">Handshaking</TextBlock>
+                <TextBox Margin="10" Width="90" VerticalAlignment="Top"></TextBox>
+            </StackPanel>
+            <Button Margin="10,10,0,10" x:Name="SaveButton" Command="{Binding UpdateCommand}" Content="Save and Connect" HorizontalAlignment="Left" Width="180"/>
+        </StackPanel>
+    </Grid>
+
+</Window>
