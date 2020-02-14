@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel;
+
 namespace ToneGenerator.Models
 {
-    public class Connection
+    public class SerialInterfaceModel
     {
-
-        public Connection(string CommPort, int BaudRate, int DataBits, string Parity, int StopBits, string Handshake)
+        
+        public SerialInterfaceModel(string CommPort, int BaudRate, int DataBits, string Parity, int StopBits, string Handshake)
         {
             this.CommPort = CommPort;
             this.BaudRate = BaudRate;
             this.DataBits = DataBits;
-            this.Parity   = Parity;
+            this.Parity = Parity;
             this.StopBits = StopBits;
             this.Handshake = Handshake;
         }

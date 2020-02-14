@@ -17,7 +17,7 @@
         <StackPanel  Orientation="Vertical" Background="White" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Padding="10" Width="90">Comm Port</TextBlock>
-                <TextBox Margin="10" Width="90" Text="{Binding CommPort, Mode=OneWay}"></TextBox>
+                <TextBox Margin="10" Width="90" Text="{Binding CommPort, Mode=TwoWay}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Padding="10" Width="90">Baud Rate</TextBlock>
@@ -25,21 +25,21 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Padding="10" Width="90">Data Bits</TextBlock>
-                <TextBox Margin="10" VerticalAlignment="Top" Width="90"></TextBox>
+                <TextBox Margin="10" VerticalAlignment="Top" Width="90" Text="{Binding DataBits, Mode=OneWay}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="90" Padding="10">Parity</TextBlock>
-                <TextBox Margin="10" Width="90" VerticalAlignment="Top"></TextBox>
+                <TextBox Margin="10" Width="90" VerticalAlignment="Top" Text="{Binding Parity, Mode=OneWay}"></TextBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="90" Padding="10">Stop Bits</TextBlock>
-                <TextBox Width="90" Margin="10" VerticalAlignment="Top"></TextBox>
+                <TextBox Width="90" Margin="10" VerticalAlignment="Top" Text="{Binding StopBits, Mode=OneWay}"></TextBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="90" Padding="10">Handshaking</TextBlock>
-                <TextBox Margin="10" Width="90" VerticalAlignment="Top"></TextBox>
+                <TextBox Margin="10" Width="90" VerticalAlignment="Top" Text="{Binding Handshake, Mode=OneWay}"></TextBox>
             </StackPanel>
             <Button Margin="10,10,0,10" x:Name="SaveButton" Command="{Binding UpdateCommand}" Content="Save and Connect" HorizontalAlignment="Left" Width="180"/>
         </StackPanel>

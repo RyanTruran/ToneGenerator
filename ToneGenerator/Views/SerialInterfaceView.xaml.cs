@@ -14,25 +14,26 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ToneGenerator.ViewModels;
 using ToneGenerator.Views;
-
+using ToneGenerator.Models;
 namespace ToneGenerator
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SerialInterfaceView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SerialInterfaceView : Window
     {
-        ConnectionViewModel cvm;
-        public MainWindow()
+        Connection connection = new Connection("comm1",1,1,"tst",2,"e");
+        public SerialInterfaceView()
         {
+
             InitializeComponent();
-            cvm = new ConnectionViewModel("Comm1", 100, 1, "None", 0, "None");
-            DataContext = cvm;
-        }
+            DataContext = new ConnectionViewModel(connection);
+         }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
+            
             ConnectionView ConnectionView = new ConnectionView();
-            ConnectionView.DataContext = cvm;
+            ConnectionView.DataContext = new ConnectionViewModel(connection);
             ConnectionView.Show();
 
         }

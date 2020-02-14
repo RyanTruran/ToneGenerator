@@ -11,70 +11,56 @@ using System.Threading;
 
 namespace ToneGenerator.ViewModels
 {
-    public class ConnectionViewModel
+    public class ConnectionViewModel : INotifyPropertyChanged
     {
-        public Connection connection;
-        public ConnectionViewModel(ConnectionViewModel ConnectionVM)
-        {            
-            UpdateCommand = new ConnectionUpdateCommand(this);
-            StartCommand = new ConnectionStartCommand(this);
-        }
-        public ConnectionViewModel( string commPort, int baudRate, int dataBits, string parity, int stopBits, string handshake)
-        {
-            connection = new Connection(commPort, baudRate, dataBits, parity, stopBits, handshake);
-            UpdateCommand = new ConnectionUpdateCommand(this);
-            StartCommand = new ConnectionStartCommand(this);
-        }
-
-
-        public String CommPort
-        {
-            get
-            {
-                return connection.CommPort;
-            }
-        }
         public int BaudRate
         {
+            get { return _connection.BaudRate; }
+            set { _connection.BaudRate = value; }
+        }
+
+        public string CommPort
+        {
             get
             {
-                return connection.BaudRate;
+                return _connection.CommPort;
             }
             set
             {
-                this.BaudRate = 121121;
+                _connection.CommPort = value;
+                OnPropertyChanged("CommPort");
             }
         }
-        public String Parity
+        public string Parity => _connection.Parity;
+
+        public string Handshake => _connection.Handshake;
+
+        public int DataBits => _connection.DataBits;
+
+        public int StopBits => _connection.StopBits;
+
+        public ICommand UpdateCommand { get; }
+        public ICommand initialize { get;  }
+        public ICommand StartCommand { get; }
+        private Connection _connection { get; }
+
+        public ConnectionViewModel()
         {
-            get
+            if(_connection == null)
             {
-                return connection.Parity;
+                _connection = new Connection("Comm1", 5, 5, "Joe", 1, "None");
             }
-        }
-        public String Handshake
-        {
-            get
-            {
-                return connection.Handshake;
-            }
+            UpdateCommand = new ConnectionUpdateCommand(this);
+            StartCommand = new ConnectionStartCommand(this);
         }
 
-        public int DataBits
+        public ConnectionViewModel(Connection connection)
         {
-            get
-            {
-                return connection.DataBits;
-            }
+            _connection = connection;
+            UpdateCommand = new ConnectionUpdateCommand(this);
+            StartCommand = new ConnectionStartCommand(this);
         }
 
-        public int StopBits
-        {
-            get
-            {
-                return connection.StopBits;
-            }
-        }
 
         public void sendCommand()
         {
@@ -104,17 +90,20 @@ namespace ToneGenerator.ViewModels
         {
            
         }
-        
-        public ICommand UpdateCommand
+        public void createObject()
         {
-            get;
-            private set;
+            new ConnectionViewModel();
         }
 
-        public ICommand StartCommand
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
         {
-            get;
-            private set;
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }
