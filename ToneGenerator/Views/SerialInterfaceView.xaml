@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ToneGenerator.ViewModels"
         d:DataContext="{d:DesignInstance local:ConnectionViewModel}"
         mc:Ignorable="d"
-        Title="SerialInterfaceView" Height="450" Width="800">
+        Title=" ToneGenerator" Height="450" Width="800">
     
     <Grid Width="Auto">
         <Grid.ColumnDefinitions>
