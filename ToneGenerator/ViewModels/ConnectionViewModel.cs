@@ -31,9 +31,16 @@ namespace ToneGenerator.ViewModels
         {
             get {
                 string ConsoleString = "";
-                foreach (string LogMessage in _connection.ConsoleLog)
+                try
                 {
-                    ConsoleString += LogMessage;
+                    foreach (string LogMessage in _connection.ConsoleLog)
+                    {
+                        ConsoleString += LogMessage;
+                    }
+                 
+                }
+                catch (System.InvalidOperationException)
+                {
                 }
                 return ConsoleString;
             }
@@ -159,38 +166,40 @@ namespace ToneGenerator.ViewModels
         public void receiveCommand()
         {
             while (true)
-            {
-                while(true)
                 try
                 {
                     string receivedMessage = _serialPort.ReadLine();
                     //update Console messages with data.
-                    Console = $"{receivedMessage}";
+                    Console = $"Received:{receivedMessage}";
                 }
                 catch (TimeoutException) { }
                 catch (System.InvalidOperationException)
                     {
                         Connected = _serialPort.IsOpen;
                         receiveThread.Join();
-                        sendThread.Join();
                     }
                     catch (System.IO.IOException)
                     {
                         Console = "Lost Connection with device";
                     }
-            }
+            
         }
 
         //send Command over serial communication to TIVA TI123GXL running ToneGenerator-Embedded.
         public void sendCommand()
         {
-
-            //Write Message to Board with structure 'Note\r\n'
-
-            if(message!=null)
-                _serialPort.Write(message);
-            //Sleep to avoid sending command when ToneGenerator-Embedded is not listening for a command.
-            Thread.Sleep(500);
+            while (true)
+            {
+                //Write Message to Board with structure 'Note\r\n'
+                if (message != null)
+                {
+                    _serialPort.Write(message);
+                }
+                //default to a non note string to begin counter on embedded system.
+                message = "Stop";
+                //Sleep to avoid sending command when ToneGenerator-Embedded is not listening for a command.
+                Thread.Sleep(200);
+            }
         }
         #endregion
         public event PropertyChangedEventHandler PropertyChanged;

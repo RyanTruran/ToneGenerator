@@ -8,12 +8,10 @@ namespace ToneGenerator.Commands
     internal class ButtonPressCommand : ICommand
     {
         private ConnectionViewModel _ViewModel;
-        private Connection _connection;
 
         public ButtonPressCommand(ConnectionViewModel viewModel)
         {
             _ViewModel = viewModel;
-     //       _connection = connection;
         }
 
         public event EventHandler CanExecuteChanged
