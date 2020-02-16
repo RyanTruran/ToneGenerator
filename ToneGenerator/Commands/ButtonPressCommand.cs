@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
+using ToneGenerator.Models;
 using ToneGenerator.ViewModels;
 
 namespace ToneGenerator.Commands
 {
-    internal class ConnectionUpdateCommand : ICommand
+    internal class ButtonPressCommand : ICommand
     {
         private ConnectionViewModel _ViewModel;
+        private Connection _connection;
 
-        public ConnectionUpdateCommand(ConnectionViewModel viewModel)
+        public ButtonPressCommand(ConnectionViewModel viewModel)
         {
             _ViewModel = viewModel;
+     //       _connection = connection;
         }
 
         public event EventHandler CanExecuteChanged
@@ -25,12 +24,12 @@ namespace ToneGenerator.Commands
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return _ViewModel.Connected;
         }
 
         public void Execute(object parameter)
         {
-//            _ViewModel.SaveChanges();
+            _ViewModel.SendNote(parameter.ToString());
         }
     }
 }

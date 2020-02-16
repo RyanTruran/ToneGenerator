@@ -30,7 +30,7 @@ namespace ToneGenerator.Commands
 
         public void Execute(object parameter)
         {
-            _ViewModel.createObject();
+//            _ViewModel.createObject();
 
         }
     }

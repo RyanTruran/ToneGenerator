@@ -22,20 +22,17 @@ namespace ToneGenerator
     /// </summary>
     public partial class SerialInterfaceView : Window
     {
-        Connection connection = new Connection("comm1",1,1,"tst",2,"e");
+        Connection connection = new Connection("COM3",115200,8,"None",1,"None");
         public SerialInterfaceView()
-        {
-
+        {            
             InitializeComponent();
-            DataContext = new ConnectionViewModel(connection);
+            DataContext = new ConnectionViewModel(connection);   
          }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            
             ConnectionView ConnectionView = new ConnectionView();
             ConnectionView.DataContext = new ConnectionViewModel(connection);
             ConnectionView.Show();
-
         }
     }
 }

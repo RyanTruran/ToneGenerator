@@ -6,7 +6,7 @@
       xmlns:localVM="clr-namespace:ToneGenerator.ViewModels"
       mc:Ignorable="d"
       d:DataContext="{d:DesignInstance localVM:ConnectionViewModel}"
-      Title="Connection Settings" Width="210" Height="324.576"
+      Title="Connection Settings" Width="210" Height="220.317"
       MinHeight="290"
       MinWidth="220">
     <Grid>
@@ -21,27 +21,26 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Padding="10" Width="90">Baud Rate</TextBlock>
-                <TextBox Margin="10" Width="90" VerticalAlignment="Top" Text="{Binding BaudRate, Mode=OneWay}" AcceptsReturn="True"></TextBox>
+                <TextBox Margin="10" Width="90" VerticalAlignment="Top" Text="{Binding BaudRate, Mode=TwoWay}" AcceptsReturn="True"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Padding="10" Width="90">Data Bits</TextBlock>
-                <TextBox Margin="10" VerticalAlignment="Top" Width="90" Text="{Binding DataBits, Mode=OneWay}"></TextBox>
+                <TextBox Margin="10" VerticalAlignment="Top" Width="90" Text="{Binding DataBits, Mode=TwoWay}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="90" Padding="10">Parity</TextBlock>
-                <TextBox Margin="10" Width="90" VerticalAlignment="Top" Text="{Binding Parity, Mode=OneWay}"></TextBox>
+                <TextBox Margin="10" Width="90" VerticalAlignment="Top" Text="{Binding Parity, Mode=TwoWay}"></TextBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="90" Padding="10">Stop Bits</TextBlock>
-                <TextBox Width="90" Margin="10" VerticalAlignment="Top" Text="{Binding StopBits, Mode=OneWay}"></TextBox>
+                <TextBox Width="90" Margin="10" VerticalAlignment="Top" Text="{Binding StopBits, Mode=TwoWay}"></TextBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="90" Padding="10">Handshaking</TextBlock>
-                <TextBox Margin="10" Width="90" VerticalAlignment="Top" Text="{Binding Handshake, Mode=OneWay}"></TextBox>
+                <TextBox Margin="10" Width="90" VerticalAlignment="Top" Text="{Binding Handshake, Mode=TwoWay}"></TextBox>
             </StackPanel>
-            <Button Margin="10,10,0,10" x:Name="SaveButton" Command="{Binding UpdateCommand}" Content="Save and Connect" HorizontalAlignment="Left" Width="180"/>
         </StackPanel>
     </Grid>
 

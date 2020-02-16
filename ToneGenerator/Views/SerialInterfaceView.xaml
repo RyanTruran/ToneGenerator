@@ -17,6 +17,7 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="4*"/>
             <RowDefinition Height="3*"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
             <Menu DockPanel.Dock="Top" Grid.Column="0" Grid.ColumnSpan="3">
@@ -26,8 +27,14 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
-
-        <Rectangle Margin="10" Grid.Column="1" Grid.Row="1" Stroke="Black"/>
+        <DockPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
+            <StatusBar>
+                <TextBlock>Connection Status</TextBlock>
+                <Separator></Separator>
+                <TextBlock Text="{Binding ConnectedString}"></TextBlock>
+            </StatusBar>
+        </DockPanel>
+        <TextBox Margin="10" Grid.Column="1" Grid.Row="1" VerticalScrollBarVisibility="Auto"  VerticalContentAlignment="Top" IsReadOnly="True" Text="{Binding Console}"  TextWrapping="Wrap"/>
         <Grid  Grid.Column="1" Grid.Row="2" Margin="20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -37,12 +44,12 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Margin="10" Grid.Column="0" Grid.Row="1" Content="E" Command=""/>
-            <Button Margin="10" Grid.Column="1" Grid.Row="1" Content="A" Command=""/>
-            <Button Margin="10" Grid.Column="2" Grid.Row="1" Content="D" Command=""/>
-            <Button Margin="10" Grid.Column="3" Grid.Row="1" Content="G" Command=""/>
-            <Button Margin="10" Grid.Column="4" Grid.Row="1" Content="B" Command=""/>
-            <Button Margin="10" Grid.Column="5" Grid.Row="1" Content="E" Command=""/>
+            <Button Margin="10" Grid.Column="0" Grid.Row="1" Content="C" Command="{Binding ButtonPress}" CommandParameter="{Binding RelativeSource = {RelativeSource Self}, Path=Content}"/>
+            <Button Margin="10" Grid.Column="1" Grid.Row="1" Content="B" Command="{Binding ButtonPress}" CommandParameter="{Binding RelativeSource = {RelativeSource Self}, Path=Content}"/>
+            <Button Margin="10" Grid.Column="2" Grid.Row="1" Content="A" Command="{Binding ButtonPress}" CommandParameter="{Binding RelativeSource = {RelativeSource Self}, Path=Content}"/>
+            <Button Margin="10" Grid.Column="3" Grid.Row="1" Content="G" Command="{Binding ButtonPress}" CommandParameter="{Binding RelativeSource = {RelativeSource Self}, Path=Content}"/>
+            <Button Margin="10" Grid.Column="4" Grid.Row="1" Content="F" Command="{Binding ButtonPress}" CommandParameter="{Binding RelativeSource = {RelativeSource Self}, Path=Content}"/>
+            <Button Margin="10" Grid.Column="5" Grid.Row="1" Content="E" Command="{Binding ButtonPress}" CommandParameter="{Binding RelativeSource = {RelativeSource Self}, Path=Content}"/>
         </Grid>
     </Grid>
 </Window>
