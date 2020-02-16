@@ -22,7 +22,11 @@ and requires a minimum of .Net Framework 4.5.
 
 Configure the settings by selecting Connection in the menu bar then selecting Settings.
 
-![Settings View](https://imgur.com/nKNbPv0.jpg)
+![Settings View](https://imgur.com/nKNbPv0.jpg)```html
+<p align="center">
+  <img width="460" height="300" src="https://imgur.com/nKNbPv0.jpg">
+</p>
+```
 
 Change the Port Name to the COM Port that the device has attached to. By Default, My computer connects to COM3 so i made that the default value. Feel free to change that in the connection constructor within SerialInterfaceView.cs to your own desired settings.
 
@@ -50,5 +54,5 @@ Killing all threads once the application exits.
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI1MTI5NjkzOSwtOTUxODI5NzNdfQ==
+eyJoaXN0b3J5IjpbMTI4MDk0NjQ4MSwtOTUxODI5NzNdfQ==
 -->
