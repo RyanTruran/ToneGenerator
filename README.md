@@ -1,7 +1,7 @@
 
 # Tone Generator
 
-Tone Generator is a MVVM WPF allpication that is used to generate sound on a Controller running **[ToneGenerator-Embedded](https://github.com/RyanTruran/ToneGenerator-Embedded)**. 
+Tone Generator is a MVVM WPF application that is used to generate sound on a Controller running **[ToneGenerator-Embedded](https://github.com/RyanTruran/ToneGenerator-Embedded)**. 
 
 
 ## Getting Started
@@ -53,6 +53,6 @@ Killing all threads once the application exits.
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMzE2NDQyMTgsLTE0MjQ3ODExMDEsLT
-k1MTgyOTczXX0=
+eyJoaXN0b3J5IjpbLTg5MzkyMTU5MCwtMTEzMTY0NDIxOCwtMT
+QyNDc4MTEwMSwtOTUxODI5NzNdfQ==
 -->
