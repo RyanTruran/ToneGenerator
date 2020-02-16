@@ -23,6 +23,7 @@ and requires a minimum of .Net Framework 4.5.
 Configure the settings by selecting Connection in the menu bar then selecting Settings.
 
 ![Settings View](https://imgur.com/nKNbPv0.jpg)
+
 Change the Port Name to the COM Port that the device has attached to. By Default, My computer connects to COM3 so i made that the default value. Feel free to change that in the connection constructor within SerialInterfaceView.cs to your own desired settings.
 
 Baud Rate, Data Bits, Parity, Stop Bits, and Handshaking, are all configured as needed by the **ToneGenerator-Embedded** application. but can be modified if you change the settings in **ToneGenerator-Embedded**.
@@ -49,5 +50,5 @@ Killing all threads once the application exits.
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk1MTgyOTczXX0=
+eyJoaXN0b3J5IjpbLTI1MTI5NjkzOSwtOTUxODI5NzNdfQ==
 -->
