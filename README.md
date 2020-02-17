@@ -44,13 +44,11 @@ Pressing one of the buttons will result in a tone being generated in tune with t
 For instance, Pressing the 'A' Button on the window, will result in an 'A' Note being played by the **ToneGenerator-Embedded** Device.
 
 Additionally, the Console will be updated to provide immediate feedback on which note was played, with the last message displaying on the top.
-
-## Features that would be nice. 
  
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2MjQxMTQ5MywtNzIxMDIzMCwtODkzOT
-IxNTkwLC0xMTMxNjQ0MjE4LC0xNDI0NzgxMTAxLC05NTE4Mjk3
-M119
+eyJoaXN0b3J5IjpbLTIwOTMwMjg0NjgsLTcyMTAyMzAsLTg5Mz
+kyMTU5MCwtMTEzMTY0NDIxOCwtMTQyNDc4MTEwMSwtOTUxODI5
+NzNdfQ==
 -->
