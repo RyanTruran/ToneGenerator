@@ -30,8 +30,9 @@ namespace ToneGenerator.Commands
 
         public void Execute(object parameter)
         {
-            _ViewModel.beginCommunication();
-
+            if (!_ViewModel.Connected){
+                _ViewModel.beginCommunication();
+            }                                       
         }
     }
 }

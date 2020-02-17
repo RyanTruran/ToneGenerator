@@ -17,7 +17,7 @@
         <StackPanel  Orientation="Vertical" Background="White" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Padding="10" Width="90">Comm Port</TextBlock>
-                <TextBox Margin="10" Width="90" Text="{Binding CommPort, Mode=TwoWay}"></TextBox>
+                <ComboBox ItemsSource="{Binding AvailablePorts}" Margin="10" SelectedItem="COM3"  Width="90" Text="{Binding CommPort, Mode=TwoWay}"></ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Padding="10" Width="90">Baud Rate</TextBlock>
@@ -29,17 +29,17 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="90" Padding="10">Parity</TextBlock>
-                <TextBox Margin="10" Width="90" VerticalAlignment="Top" Text="{Binding Parity, Mode=TwoWay}"></TextBox>
+                <ComboBox ItemsSource="{Binding AvailableParity}" SelectedItem="None" Margin="10" Width="90" VerticalAlignment="Top" Text="{Binding Parity, Mode=TwoWay}"></ComboBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="90" Padding="10">Stop Bits</TextBlock>
-                <TextBox Width="90" Margin="10" VerticalAlignment="Top" Text="{Binding StopBits, Mode=TwoWay}"></TextBox>
+                <ComboBox ItemsSource="{Binding AvailableStopBits}" SelectedItem="{Binding StopBits}" Width="90" Margin="10" VerticalAlignment="Top" Text="{Binding StopBits, Mode=TwoWay}"></ComboBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Width="90" Padding="10">Handshaking</TextBlock>
-                <TextBox Margin="10" Width="90" VerticalAlignment="Top" Text="{Binding Handshake, Mode=TwoWay}"></TextBox>
+                <ComboBox ItemsSource="{Binding AvailableHandshaking}" SelectedItem="{Binding Handshake}" Margin="10" Width="90" VerticalAlignment="Top" Text="{Binding Handshake, Mode=TwoWay}"></ComboBox>
             </StackPanel>
         </StackPanel>
     </Grid>

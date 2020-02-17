@@ -7,6 +7,7 @@ using System.Threading;
 using System.Runtime.CompilerServices;
 using System.IO.Ports;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace ToneGenerator.ViewModels
 {
@@ -26,6 +27,54 @@ namespace ToneGenerator.ViewModels
         {
             get { return _connection.CommPort; }
             set { _connection.CommPort = value; }
+        }
+        public List<string> AvailablePorts
+        {
+            get
+            {
+                List<string> availablePorts = new List<string>();
+                foreach (string s in SerialPort.GetPortNames())
+                {
+                    availablePorts.Add(s);
+                }
+                return availablePorts;
+            }
+        }
+        public List<string> AvailableParity
+        {
+            get
+            {
+                List<string> availableParity = new List<string>();
+                foreach (string s in Enum.GetNames(typeof(Parity)))
+                {
+                    availableParity.Add(s.ToString());
+                }
+                return availableParity;
+            }
+        }
+        public List<string> AvailableStopBits
+        {
+            get
+            {
+                List<string> availableStopBits = new List<string>();
+                foreach (string s in Enum.GetNames(typeof(StopBits)))
+                {
+                    availableStopBits.Add(s.ToString());
+                }
+                return availableStopBits;
+            }
+        }
+        public List<string> AvailableHandshaking
+        {
+            get
+            {
+                List<string> availableHandshaking = new List<string>();
+                foreach (string s in Enum.GetNames(typeof(Handshake)))
+                {
+                    availableHandshaking.Add(s.ToString());
+                }
+                return availableHandshaking;
+            }
         }
         public string Console
         {
@@ -81,7 +130,7 @@ namespace ToneGenerator.ViewModels
             set { _connection.DataBits = value; }
         }
 
-        public int StopBits
+        public string StopBits
         {
             get { return _connection.StopBits; }
             set { _connection.StopBits = value; }
@@ -154,7 +203,6 @@ namespace ToneGenerator.ViewModels
             }
             catch (System.IO.IOException ex)
             {
-
                 //Typically caused by either using wrong Com Port or the device not being connected.
                 Console = $"{ex.Message}";
                 Console = $"Verify settings in Connection->Settings are correct and that the device is connected! {i}";

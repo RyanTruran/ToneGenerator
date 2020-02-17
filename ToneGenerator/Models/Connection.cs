@@ -12,7 +12,7 @@ namespace ToneGenerator.Models
     public class Connection
     {
         #region Connection Constructor
-        public Connection(string CommPort, int BaudRate, int DataBits, string Parity, int StopBits, string Handshake)
+        public Connection(string CommPort, int BaudRate, int DataBits, string Parity, string StopBits, string Handshake)
         {
             this.CommPort = CommPort;
             this.BaudRate = BaudRate;
@@ -33,7 +33,7 @@ namespace ToneGenerator.Models
         public int BaudRate { get; set; }
         public int DataBits { get; set; }
         public string Parity { get; set; }
-        public int StopBits { get; set; }
+        public string StopBits { get; set; }
         public string Handshake { get; set; }
         #endregion
         

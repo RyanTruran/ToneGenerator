@@ -22,7 +22,7 @@ namespace ToneGenerator
     /// </summary>
     public partial class SerialInterfaceView : Window
     {
-        Connection connection = new Connection("COM3",115200,8,"None",1,"None");
+        Connection connection = new Connection("COM3",115200,8,"None","One","None");
         public SerialInterfaceView()
         {            
             InitializeComponent();
