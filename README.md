@@ -45,14 +45,12 @@ For instance, Pressing the 'A' Button on the window, will result in an 'A' Note 
 
 Additionally, the Console will be updated to provide immediate feedback on which note was played, with the last message displaying on the top.
 
-## Features that need to be implemented
-
-~~Blocking the Execution of the connect button once the device is connected,~~
-
-Killing all threads once the application exits. 
+## Features that would be nice. 
+ 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcyMTAyMzAsLTg5MzkyMTU5MCwtMTEzMT
-Y0NDIxOCwtMTQyNDc4MTEwMSwtOTUxODI5NzNdfQ==
+eyJoaXN0b3J5IjpbLTU2MjQxMTQ5MywtNzIxMDIzMCwtODkzOT
+IxNTkwLC0xMTMxNjQ0MjE4LC0xNDI0NzgxMTAxLC05NTE4Mjk3
+M119
 -->
