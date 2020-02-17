@@ -18,6 +18,8 @@ namespace ToneGenerator.ViewModels
         /// Getters and Setters that are exposed to bindings on View.
         /// </summary>
         #region
+        private Connection _connection { get; }
+
         public int BaudRate
         {
             get { return _connection.BaudRate; }
@@ -40,6 +42,7 @@ namespace ToneGenerator.ViewModels
                 return availablePorts;
             }
         }
+
         public List<string> AvailableParity
         {
             get
@@ -140,20 +143,21 @@ namespace ToneGenerator.ViewModels
         /// ICommands for Buttons on the View.
         /// </summary>
         #region
-        public ICommand ButtonPress{ get; }
-        public ICommand StartCommand { get; }
+            public ICommand WindowClosing { get; }
+            public ICommand ButtonPress{ get; }
+            public ICommand StartCommand { get; }
         #endregion
 
-        private Connection _connection { get; }
 
         /// <summary>
         /// Constructor for View model, settings are not stored in a persistent manner since only one 
         /// connection is allowed per the spec, and the settings could change between use.
         /// </summary>
         /// <param name="connection"></param>
-        public ConnectionViewModel(Connection connection)
+            public ConnectionViewModel(Connection connection)
         {
             _connection = connection;
+            WindowClosing = new WindowClosingCommand(this);
             StartCommand = new ConnectionStartCommand(this);
             ButtonPress = new ButtonPressCommand(this);
         }
@@ -167,6 +171,13 @@ namespace ToneGenerator.ViewModels
             message = $"{Note}\r\n";
         }
         #endregion
+
+        internal void CloseWindow()
+        {
+            sendThread.Join();
+            receiveThread.Join();
+            _serialPort.Close();
+        }
 
         #region Serial Communication
         /// <summary>
@@ -250,15 +261,15 @@ namespace ToneGenerator.ViewModels
             }
         }
         #endregion
-        public event PropertyChangedEventHandler PropertyChanged;
+            public event PropertyChangedEventHandler PropertyChanged;
 
-        private void OnPropertyChanged([CallerMemberName]string propertyName = "")
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
+            private void OnPropertyChanged([CallerMemberName]string propertyName = "")
             {
-                handler(this, new PropertyChangedEventArgs(propertyName));
+                PropertyChangedEventHandler handler = PropertyChanged;
+                if (handler != null)
+                {
+                    handler(this, new PropertyChangedEventArgs(propertyName));
+                }
             }
-        }
     }
 }
