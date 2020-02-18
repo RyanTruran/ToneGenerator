@@ -27,7 +27,6 @@ namespace ToneGenerator.Commands
             //only allow button press if a connection has been established.
             return _ViewModel.Connected;
         }
-
         public void Execute(object parameter)
         {
             //Gets the Content from the button, to play as a tone, then passes it to the SendNote Command

@@ -23,6 +23,7 @@ namespace ToneGenerator.Models
             this.Connected = false;
         }
         #endregion
+
         /// <summary>
         /// Getters and setters, used when communicating with the ViewModel.
         /// </summary>
@@ -36,6 +37,5 @@ namespace ToneGenerator.Models
         public string StopBits { get; set; }
         public string Handshake { get; set; }
         #endregion
-        
     }
 }
