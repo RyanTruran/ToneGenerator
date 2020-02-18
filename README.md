@@ -44,15 +44,11 @@ Pressing one of the buttons will result in a tone being generated in tune with t
 For instance, Pressing the 'A' Button on the window, will result in an 'A' Note being played by the **ToneGenerator-Embedded** Device.
 
 Additionally, the Console will be updated to provide immediate feedback on which note was played, with the last message displaying on the top.
-
-## Features that need to be implemented
-
-~~Blocking the Execution of the connect button once the device is connected,~~
-
-Killing all threads once the application exits. 
+ 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcyMTAyMzAsLTg5MzkyMTU5MCwtMTEzMT
-Y0NDIxOCwtMTQyNDc4MTEwMSwtOTUxODI5NzNdfQ==
+eyJoaXN0b3J5IjpbLTIwOTMwMjg0NjgsLTcyMTAyMzAsLTg5Mz
+kyMTU5MCwtMTEzMTY0NDIxOCwtMTQyNDc4MTEwMSwtOTUxODI5
+NzNdfQ==
 -->
