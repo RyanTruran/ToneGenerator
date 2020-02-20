@@ -19,7 +19,7 @@ namespace ToneGenerator.ViewModels
         /// </summary>
         #region
         private Connection _connection { get; }
-
+        private bool stopComms = false;
         public int BaudRate
         {
             get { return _connection.BaudRate; }
@@ -173,9 +173,11 @@ namespace ToneGenerator.ViewModels
         #endregion
 
         internal void CloseWindow()
-        {
-            sendThread.Join();
-            receiveThread.Join();
+        {   //Stop Threads
+            stopComms = true;
+            //Wait until threads are killed before exiting
+            while (sendThread.IsAlive || receiveThread.IsAlive) { }
+            //Close out serial port
             _serialPort.Close();
         }
 
@@ -224,7 +226,7 @@ namespace ToneGenerator.ViewModels
         //receive serial communication from device, and update Console message data on UI.
         public void receiveCommand()
         {
-            while (true)
+            while (!stopComms)
                 try
                 {
                     string receivedMessage = _serialPort.ReadLine();
@@ -247,7 +249,7 @@ namespace ToneGenerator.ViewModels
         //send Command over serial communication to TIVA TI123GXL running ToneGenerator-Embedded.
         public void sendCommand()
         {
-            while (true)
+            while (!stopComms)
             {
                 //Write Message to Board with structure 'Note\r\n'
                 if (message != null)
