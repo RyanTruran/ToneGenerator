@@ -93,6 +93,7 @@ namespace ToneGenerator.ViewModels
                 }
                 catch (System.InvalidOperationException)
                 {
+
                 }
                 return ConsoleString;
             }
@@ -110,6 +111,7 @@ namespace ToneGenerator.ViewModels
                 OnPropertyChanged("ConnectedString");
             }
         }
+
         public string ConnectedString
         {
             get { return _connection.Connected ? "Connected" : "Disconnected"; }           
@@ -195,6 +197,7 @@ namespace ToneGenerator.ViewModels
         static Thread sendThread;
         public void beginCommunication()
         {
+            stopComms = false;
             _serialPort = new SerialPort(CommPort);
             _serialPort.StopBits = (StopBits)Enum.Parse(typeof(StopBits), StopBits.ToString());
             _serialPort.BaudRate = BaudRate;
@@ -234,16 +237,21 @@ namespace ToneGenerator.ViewModels
                     Console = $"Received:{receivedMessage}";
                 }
                 catch (TimeoutException) { }
-                catch (System.InvalidOperationException)
+                catch (Exception ex)
+                {
+                    if (ex is InvalidOperationException || ex is System.IO.IOException)
                     {
-                        Connected = _serialPort.IsOpen;
-                        receiveThread.Join();
+                        Connected = false;
+                        stopComms = true;
+                        Console = "Lost connection with device";
                     }
-                    catch (System.IO.IOException)
+                    else
                     {
-                        Console = "Lost Connection with device";
+                        Connected = false;
+                        stopComms = true;
+                        Console = ex.Message;
                     }
-            
+                }
         }
 
         //send Command over serial communication to TIVA TI123GXL running ToneGenerator-Embedded.
@@ -254,7 +262,24 @@ namespace ToneGenerator.ViewModels
                 //Write Message to Board with structure 'Note\r\n'
                 if (message != null)
                 {
-                    _serialPort.Write(message);
+                    try
+                    {
+                        _serialPort.Write(message);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex is InvalidOperationException || ex is System.IO.IOException)
+                        {
+                            Connected = false;
+                            stopComms = true;
+                        }
+                        else
+                        {
+                            Connected = false;
+                            stopComms = true;
+                            Console = ex.Message;
+                        }
+                    }
                 }
                 //default to a non note string to begin counter on embedded system.
                 message = "Stop";
